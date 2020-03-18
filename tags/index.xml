@@ -2,12 +2,12 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on Trycatch의 예외처리</title>
-    <link>http://example.com/tags/</link>
+    <link>https://trycatch98.github.io/tags/</link>
     <description>Recent content in Tags on Trycatch의 예외처리</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>© 2019. Theme by &lt;a href=&#34;https://github.com/MeiK2333/github-style&#34;&gt;&lt;span&gt;github-style&lt;/span&gt;&lt;/a&gt;</copyright>
     
-	<atom:link href="http://example.com/tags/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://trycatch98.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
     
   </channel>
