@@ -90,13 +90,13 @@
                                     href="https://trycatch98.github.io/posts/aac-navigation-component-1.-navigation/">[Android Jetpack] AAC Navigation Component - 1. Navigation 소개 및 시작하기</a></strong>
 
                             <div class="d-block text-small text-gray">
-                                Created <time-ago datetime="2020-04-01" class="no-wrap"
-                                    title="Created at 2020/04/01">
-                                    2020-04-01</time-ago>
+                                Created <time-ago datetime="2020-04-15" class="no-wrap"
+                                    title="Created at 2020/04/15">
+                                    2020-04-15</time-ago>
                                 <span class="file-info-divider"></span>
-                                Modifyed <time-ago datetime="2020-04-01" class="no-wrap"
-                                    title="Modified  at 2020/04/01">
-                                    2020-04-01</time-ago>
+                                Modifyed <time-ago datetime="2020-04-15" class="no-wrap"
+                                    title="Modified  at 2020/04/15">
+                                    2020-04-15</time-ago>
                             </div>
                         </h1>
                     </div>
@@ -111,7 +111,7 @@
                     <div class="Box mt-3 position-relative">
                         <div class="Box-header py-2 d-flex flex-column flex-shrink-0 flex-md-row flex-md-items-center">
                             <div class="text-mono f6 flex-auto pr-3 flex-order-2 flex-md-order-1 mt-2 mt-md-0">
-                                1815 Words
+                                2088 Words
                                 
                             </div>
                         </div>
@@ -124,23 +124,21 @@
 <p>참고: 프로젝트에서 Navigation Component를 사용하지 않더라도 이러한 설계 원칙을 따라야 합니다.</p>
 </blockquote>
 <h3 id="1-고정-시작점fixed-start-destination">1. 고정 시작점(Fixed start destination)</h3>
-<p>모든 앱은 사용자가 런처에서 실행할 때 처음으로 표시되는 화면과 사용자가 Back 버튼을 누른 후 마지막으로 보여지는 화면인 고정 시작점이 있어야합니다.</p>
-<p>모든 앱은 고정 시작점이 있어야합니다. 고정 시작점이란 사용자가 앱을 런처에서 실행할 때 처음으로 보여지는 화면과 사용자가 Back 버튼을 누른 후 마지막으로 도착하는 화면입니다.</p>
+<p>모든 앱은 고정 시작점이 있어야합니다. 고정 시작점이란 앱을 실행할 때 처음으로 보여지는 화면이자 Back 버튼을 누른 후 마지막으로 도착하는 화면입니다.</p>
 <blockquote>
 <p>참고: 앱에 일회성 설정 또는 일련의 로그인 화면이 있을 수 있습니다. 조건부 화면은 일부 경우에만 사용자에게 표시되므로 시작 화면으로 고려해서는 안 됩니다.</p>
 </blockquote>
-<h3 id="2-navigation-상태는-스택으로-표현">2. Navigation 상태는 스택으로 표현</h3>
-<p>Navigation의 상태는 스택으로 표현됩니다. 앱이 처음 실행되면 시작점을 가지는 스택을 만듭니다. 이것을 백 스택이라고 부르며 스택의 최상단은 현재 표시되고 있는 화면을 나타내고, 이전 스택들은 방문했던 목적지들의 기록을 나타냅니다.</p>
+<h3 id="2-navigation-상태는-화면들의-stack으로-표현">2. Navigation 상태는 화면들의 Stack으로 표현</h3>
+<p>Navigation의 상태는 Stack으로 표현됩니다. 앱이 처음 실행되면 Back Stack이라 부르는 Stack을 생성합니다. 이 Stack의 최하단에는 고정 시작점이 위치하며, 방문하는 화면의 순서대로 Stack에 쌓이게 됩니다. 따라서 스택의 최상단은 현재 표시되고 있는 화면을 나타냅니다.</p>
 <p><img src="/images/navigation-component1/navigation-backstack1.png" alt="navigation-backstack1"></p>
 <h3 id="3-앱에서-up-and--back-버튼은-동일하게-작동">3. 앱에서 Up and  Back 버튼은 동일하게 작동</h3>
-<p>화면 하단의 시스템 메뉴인 Back 버튼은 백 스택을 탐색하는데 사용됩니다. Back 버튼을 누르면 현재 표시되고 있는 화면이 백 스택 상단에서 사리지고 이전 화면으로 이동합니다. Up 버튼은 화면 상단 App Bar에 위치하며 Back 버튼과 동일하게 작동합니다.</p>
+<p>화면 하단의 시스템 메뉴인 Back 버튼은 백 스택을 탐색하는데 사용됩니다. Back 버튼을 누르면 현재 표시되고 있는 화면이 Back Stack 상단에서 사라지고 이전 화면으로 이동합니다. Up 버튼 또한 Back 버튼과 동일하게 작동하며 화면 상단 App Bar에 위치합니다.</p>
 <p><img src="/images/navigation-component1/navigation-backstack2.png" alt="navigation-backstack2"></p>
 <h3 id="4-up-버튼으로는-앱-종료-불가">4. Up 버튼으로는 앱 종료 불가</h3>
-<p>앱의 시작점에 있는 경우 Up 버튼은 앱을 종료하지 않으므로 표시되지 않습니다. 하지만 Back 버튼은 표시되며 앱을 종료시킵니다.</p>
-<p>다른 앱에서 딥 링크를 호출하여 실행되면 Up 버튼은 딥 링크를 트리거한 앱이 아닌 <a href="#5-%EC%88%98%EB%8F%99-%ED%83%90%EC%83%89%EC%9D%84-%EC%8B%9C%EB%AE%AC%EB%A0%88%EC%9D%B4%EC%85%98%ED%95%98%EB%8A%94-%EB%94%A5-%EB%A7%81%ED%81%AC">시뮬레이션된 백 스택</a>을 탐색합니다. 하지만 Back 버튼을 누를 시 다른 앱으로 돌아갑니다.</p>
+<p>앱의 시작 화면에 있는 경우 Up 버튼은 앱을 종료하지 않으므로 표시되지 않습니다. 하지만 Back 버튼은 표시되며 앱을 종료시킬 수 있습니다.</p>
+<p>다른 앱에서 딥 링크를 호출하여 앱이 실행되면 Up 버튼은 딥 링크를 트리거한 앱이 아닌 <a href="#5-%EC%88%98%EB%8F%99-%ED%83%90%EC%83%89%EC%9D%84-%EC%8B%9C%EB%AE%AC%EB%A0%88%EC%9D%B4%EC%85%98%ED%95%98%EB%8A%94-%EB%94%A5-%EB%A7%81%ED%81%AC">시뮬레이션된 백 스택</a>을 탐색합니다. 하지만 Back 버튼을 누를 시 다른 앱으로 돌아갑니다.</p>
 <h3 id="5-수동-탐색을-시뮬레이션하는-딥-링크">5. 수동 탐색을 시뮬레이션하는 딥 링크</h3>
-<p>사용자는 수동 또는 딥 링크를 이용하여 특정 화면으로 이동 할 수 있습니다. 두가지 경우 다 동일한 백 스택을 가져야 되며 Up 버튼 또는 Back 버튼을 사용하여 시작점으로 이동 할 수 있어야합니다.</p>
-<p>딥 링크를 호출하면 앱의 기존 백 스택이 새로운 백 스택으로 대체됩니다. 이 때 백 스택은 앱을 수동으로 탐색하여 얻을 수 있는 백 스택과 동일해야합니다. 이는 앱의 백 스택이 사실적이어야 하므로 중요합니다.</p>
+<p>사용자는 수동 또는 딥 링크를 이용하여 특정 화면으로 이동 할 수 있습니다. 이 때 수동으로 탐색했던 딥 링크를 사용해 탐색을 했던 모두 동일한 백 스택을 가져야 되며 Up 버튼을 눌러서 시작 화면으로 이동 할 수 있어야합니다.</p>
 <h2 id="환경-설정">환경 설정</h2>
 <blockquote>
 <p>참고: Navigation Component를 사용하려면 Android 스튜디오 3.3 이상을 사용해야 합니다.</p>
@@ -179,14 +177,7 @@
 <li><strong>Attributes</strong>: Navigation Graph에서 현재 선택된 항목의 속성을 보여줍니다.</li>
 <li><strong>View mode</strong>: Design 뷰, XML 코드를 볼 수 있는 Code 뷰, 화면을 나누어주는 Split 뷰를 전환 할 수 있습니다.</li>
 </ol>
-<p><strong>Code</strong> 뷰를 클릭하면 아래와 같은 XML 코드를 확인 할 수 있습니다.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#75715e">&lt;?xml version=&#34;1.0&#34; encoding=&#34;utf-8&#34;?&gt;</span>
-<span style="color:#f92672">&lt;navigation</span> <span style="color:#a6e22e">xmlns:android=</span><span style="color:#e6db74">&#34;http://schemas.android.com/apk/res/android&#34;</span>
-            <span style="color:#a6e22e">xmlns:app=</span><span style="color:#e6db74">&#34;http://schemas.android.com/apk/res-auto&#34;</span>
-            <span style="color:#a6e22e">android:id=</span><span style="color:#e6db74">&#34;@+id/nav_graph&#34;</span><span style="color:#f92672">&gt;</span>
-
-<span style="color:#f92672">&lt;/navigation&gt;</span>
-</code></pre></div><p>###Activity에 NavHost 추가</p>
+<p>###Activity에 NavHost 추가</p>
 <p>Acitity는 NavHost를 통해 Navigation을 관리하게 됩니다. NavHost는 Navigation Graph에 정의된 목적지들이 전환되는 컨테이너의 역할을 합니다.</p>
 <p>NavHost는 NavHostFragment로 구현되어 있으며, 화면 이동에 관련된 모든 활동을 처리합니다.</p>
 <p>NavHost를 구현하기 위해선 name 속성과 navGraph 속성을 추가해 주어야 합니다.</p>
@@ -222,7 +213,7 @@
 <li>화면 상단 <strong>New Destination</strong>을 클릭한 후 <strong>Create new destination</strong>을 클릭합니다.</li>
 <li>표시된 다이얼로그에서 Fragment를 생성합니다.</li>
 </ol>
-<p><img src="/Users/trycatch/programming/web/Dev-Blog/public/images/navigation-component1/create_fragment.png" alt="create_fragment"></p>
+<p><img src="/images/navigation-component1/create_fragment.png" alt="create_fragment"></p>
 <p><strong>Code</strong> 뷰를 클릭하면 아래와 같은 XML 코드를 확인 할 수 있습니다.</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#75715e">&lt;?xml version=&#34;1.0&#34; encoding=&#34;utf-8&#34;?&gt;</span>
 <span style="color:#f92672">&lt;navigation</span> <span style="color:#a6e22e">xmlns:android=</span><span style="color:#e6db74">&#34;http://schemas.android.com/apk/res/android&#34;</span>
@@ -237,9 +228,61 @@
         <span style="color:#a6e22e">android:label=</span><span style="color:#e6db74">&#34;fragment_blank&#34;</span>
         <span style="color:#a6e22e">tools:layout=</span><span style="color:#e6db74">&#34;@layout/fragment_blank&#34;</span> <span style="color:#f92672">/&gt;</span>
 <span style="color:#f92672">&lt;/navigation&gt;</span>
-</code></pre></div><h3 id="목적지-연결">목적지 연결</h3>
-<p><img src="/Users/trycatch/programming/web/Dev-Blog/public/images/navigation-component1/action.gif" alt="action"></p>
-</article>
+</code></pre></div><h3 id="action">Action</h3>
+<p>Action은 목적지 간의 연결입니다.</p>
+<p><img src="/images/navigation-component1/action.gif" alt="action"></p>
+<p>위와 같은 방법처럼 드래그하여 Action을 생성 할 수 있습니다. 이 Action은 BlankFragment에서 NextFragment로 이동 할 때 사용됩니다.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#75715e">&lt;?xml version=&#34;1.0&#34; encoding=&#34;utf-8&#34;?&gt;</span>
+<span style="color:#f92672">&lt;navigation</span> <span style="color:#a6e22e">xmlns:android=</span><span style="color:#e6db74">&#34;http://schemas.android.com/apk/res/android&#34;</span>
+    <span style="color:#a6e22e">xmlns:app=</span><span style="color:#e6db74">&#34;http://schemas.android.com/apk/res-auto&#34;</span>
+    <span style="color:#a6e22e">xmlns:tools=</span><span style="color:#e6db74">&#34;http://schemas.android.com/tools&#34;</span>
+    <span style="color:#a6e22e">android:id=</span><span style="color:#e6db74">&#34;@+id/nav_graph&#34;</span>
+    <span style="color:#a6e22e">app:startDestination=</span><span style="color:#e6db74">&#34;@id/blankFragment&#34;</span><span style="color:#f92672">&gt;</span>
+
+    <span style="color:#f92672">&lt;fragment</span>
+        <span style="color:#a6e22e">android:id=</span><span style="color:#e6db74">&#34;@+id/blankFragment&#34;</span>
+        <span style="color:#a6e22e">android:name=</span><span style="color:#e6db74">&#34;com.hansung.navigationcomponentexample.BlankFragment&#34;</span>
+        <span style="color:#a6e22e">android:label=</span><span style="color:#e6db74">&#34;fragment_blank&#34;</span>
+        <span style="color:#a6e22e">tools:layout=</span><span style="color:#e6db74">&#34;@layout/fragment_blank&#34;</span> <span style="color:#f92672">&gt;</span>
+        <span style="color:#f92672">&lt;action</span>
+            <span style="color:#a6e22e">android:id=</span><span style="color:#e6db74">&#34;@+id/action_blankFragment_to_nextFragment&#34;</span>
+            <span style="color:#a6e22e">app:destination=</span><span style="color:#e6db74">&#34;@id/nextFragment&#34;</span> <span style="color:#f92672">/&gt;</span>
+    <span style="color:#f92672">&lt;/fragment&gt;</span>
+    <span style="color:#f92672">&lt;fragment</span>
+        <span style="color:#a6e22e">android:id=</span><span style="color:#e6db74">&#34;@+id/nextFragment&#34;</span>
+        <span style="color:#a6e22e">android:name=</span><span style="color:#e6db74">&#34;com.hansung.navigationcomponentexample.NextFragment&#34;</span>
+        <span style="color:#a6e22e">android:label=</span><span style="color:#e6db74">&#34;fragment_next&#34;</span>
+        <span style="color:#a6e22e">tools:layout=</span><span style="color:#e6db74">&#34;@layout/fragment_next&#34;</span> <span style="color:#f92672">/&gt;</span>
+<span style="color:#f92672">&lt;/navigation&gt;</span>
+</code></pre></div><ul>
+<li><code>android:id</code> 속성은 Action의 id입니다. 이 id는 화면을 전환 할 때 호출됩니다.</li>
+<li><code>app:destination</code> 속성은 이동할 목적지의 id를 나타냅니다.</li>
+</ul>
+<h3 id="화면-전환">화면 전환</h3>
+<p>화면 전환은 <code>NavHost</code> 내에서 화면 전환을 관리하는 객체인 <code>NavController</code>를 사용하여 실행됩니다. <code>NavController</code>는 다음 메소드를 사용하여 가져올 수 있습니다.</p>
+<p><strong>Kotlin</strong></p>
+<ul>
+<li><code>Fragment.findNavController()</code></li>
+<li><code>View.findNavController()</code></li>
+<li><code>Activity.findNavController(viewId: Int)</code></li>
+</ul>
+<p><strong>Java</strong></p>
+<ul>
+<li><code>NavHostFragment.findNavController(Fragment)</code></li>
+<li><code>Navigation.findNavController(Activity, @IdRes int viewId)</code></li>
+<li><code>Navigation.findNavController(View)</code></li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kotlin" data-lang="kotlin"><span style="color:#75715e">// Kotlin
+</span><span style="color:#75715e">// Fragment, View에서 NavController 가져오기 findNavController를 호출
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">val</span> navController = findNavController()
+
+<span style="color:#75715e">// Activity에서 NavController 가져오기 NavHost의 아이디를 인자로 넘겨줌
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">val</span> navController = findNavController(R.id.nav_host)
+</code></pre></div><p><code>NavController</code>를 가져오면 아래와 같이 action의 id를 이용해 화면 전환이 가능합니다.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-kotlin" data-lang="kotlin"><span style="color:#66d9ef">val</span> navController = findNavController()
+<span style="color:#75715e">// NavGraph에 정의한 Action의 id
+</span><span style="color:#75715e"></span>navController.navigate(R.id.action_blankFragment_to_nextFragment)
+</code></pre></div></article>
                         </div>
                     </div>
                 </div>

@@ -6,7 +6,7 @@
     <description>Recent content in Posts on Trycatch의 예외처리</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>© 2019. Theme by &lt;a href=&#34;https://github.com/MeiK2333/github-style&#34;&gt;&lt;span&gt;github-style&lt;/span&gt;&lt;/a&gt;</copyright>
-    <lastBuildDate>Wed, 01 Apr 2020 16:16:32 +0900</lastBuildDate>
+    <lastBuildDate>Wed, 15 Apr 2020 18:19:00 +0900</lastBuildDate>
     
 	<atom:link href="https://trycatch98.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
     
@@ -14,13 +14,13 @@
     <item>
       <title>[Android Jetpack] AAC Navigation Component - 1. Navigation 소개 및 시작하기</title>
       <link>https://trycatch98.github.io/posts/aac-navigation-component-1.-navigation/</link>
-      <pubDate>Wed, 01 Apr 2020 16:16:32 +0900</pubDate>
+      <pubDate>Wed, 15 Apr 2020 18:19:00 +0900</pubDate>
       
       <guid>https://trycatch98.github.io/posts/aac-navigation-component-1.-navigation/</guid>
       <description>[Android Jetpack] AAC Navigation Component - 1. Navigation 소개 및 시작하기 Android Jetpack의 Navigation Component는 화면끼리의 전환과 흐름을 시각적으로 볼 수 있도록 도와주는 AAC(Android Architecture Component) 라이브러리입니다.
 Navigation의 기본 원칙  참고: 프로젝트에서 Navigation Component를 사용하지 않더라도 이러한 설계 원칙을 따라야 합니다.
- 1. 고정 시작점(Fixed start destination) 모든 앱은 사용자가 런처에서 실행할 때 처음으로 표시되는 화면과 사용자가 Back 버튼을 누른 후 마지막으로 보여지는 화면인 고정 시작점이 있어야합니다.
-모든 앱은 고정 시작점이 있어야합니다.</description>
+ 1. 고정 시작점(Fixed start destination) 모든 앱은 고정 시작점이 있어야합니다. 고정 시작점이란 앱을 실행할 때 처음으로 보여지는 화면이자 Back 버튼을 누른 후 마지막으로 도착하는 화면입니다.
+ 참고: 앱에 일회성 설정 또는 일련의 로그인 화면이 있을 수 있습니다.</description>
     </item>
     
   </channel>
